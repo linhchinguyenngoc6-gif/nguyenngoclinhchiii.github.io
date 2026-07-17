@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Portfolio của tôi</title>
+    <style>
+        :root {
+            --bg-dark: linear-gradient(135deg, #142d22, #0d1f17);
+            --bg-light: #f6f5f1;
+            --card-white: #ffffff;
+            --accent-gold: #c5a059;
+            --text-dark: #1a3327;
+            --text-light: #ffffff;
+            --text-muted: #66756e;
+        }
+        * {
+            box-sizing: border-box;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--bg-light);
+            color: var(--text-dark);
+            scroll-behavior: smooth;
+        }
+        
+        /* Thanh điều hướng giống ảnh 1 */
+        .nav-container {
+            background-color: #fcfbfa;
+            border-radius: 24px;
+            padding: 15px 10px;
+            margin: 15px auto;
+            max-width: 500px;
+            width: 92%;
+            box-shadow: 0 8px 24px rgba(0,0,0,0.06);
+            text-align: center;
+            position: sticky;
+            top: 15px;
+            z-index: 1000;
+        }
+        .nav-title {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 12px;
+            color: #11251c;
+        }
+        .nav-title span {
+            color: var(--accent-gold);
+        }
+        .nav-links {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 8px;
+        }
+        .nav-item {
+            text-decoration: none;
+            color: var(--text-dark);
+            font-size: 13px;
+            font-weight: 500;
+            padding: 6px 10px;
+            border-radius: 12px;
+            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+        .nav-item:hover {
+            background-color: #eae8e2;
+        }
+
+        /* Khung xanh Hero Section giống ảnh 1 */
+        .hero-section {
+            background: var(--bg-dark);
+            color: var(--text-light);
+            padding: 45px 20px 50px 20px;
+            border-radius: 32px;
+            margin: 15px auto;
+            max-width: 600px;
+            width: 92%;
+            box-shadow: 0 10px 30px rgba(17,37,28,0.15);
+        }
+        .badge-pill {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(255,255,255,0.15);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 25px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        .hero-title {
+            font-size: 34px;
+            font-weight: 800;
+            line-height: 1.2;
+            margin: 0 0 20px 0;
+        }
+        .hero-desc {
+            font-size: 14px;
+            line-height: 1.6;
+            opacity: 0.9;
+            margin-bottom: 30px;
+        }
+        .hero-buttons {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+        .btn-gold {
+            background-color: #ebdcb9;
+            color: #1a3327;
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+        .btn-outline {
+            border: 1px solid rgba(255,255,255,0.4);
+            color: var(--text-light);
+            padding: 12px 20px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 13px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        /* Khung các Section nội dung chính */
+        .section-container {
+            padding: 40px 20px 20px 20px;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        .section-title {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin-bottom: 8px;
+        }
+        .section-subtitle {
+            color: var(--text-muted);
+            font-size: 14px;
+            margin-bottom: 25px;
+            line-height: 1.5;
+        }
+        
+        /* Thẻ thông tin cá nhân giống ảnh 2 */
+        .profile-card {
+            background: var(--card-white);
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+            text-align: center;
+        }
+        .avatar-box {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #e1e8e5;
+            margin: 0 auto 20px auto;
+            overflow: hidden;
+            border: 3px solid #fff;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 40px;
+        }
+        .avatar-box img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        .profile-name {
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--text-dark);
+            margin: 0 0 8px 0;
+            text-align: left;
+        }
+        .profile-sub {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-bottom: 20px;
+            text-align: left;
+        }
+        .info-list {
+            text-align: left;
+            border-top: 1px solid #f0f0ed;
+            padding-top: 10px;
+        }
+        .info-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 12px 0;
+            font-size: 14px;
+            border-bottom: 1px solid #f6f5f1;
+        }
+        .info-item:last-child {
+            border-bottom: none;
+        }
+        .info-label {
+            font-weight: 500;
+            color: var(--text-dark);
+        }
+
+        /* Lưới hiển thị 6 Bài tập (Dự án) thành ô điều hướng */
+        .project-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 15px;
+        }
+        .project-card {
+            background: var(--card-white);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 6px 20px rgba(0,0,0,0.02);
+            text-decoration: none;
+            color: var(--text-dark);
+            transition: all 0.2s;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid transparent;
+        }
+        .project-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px rgba(20,45,34,0.08);
+            border-color: rgba(20,45,34,0.1);
+        }
+        .project-tag {
+            font-size: 11px;
+            font-weight: 700;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            margin-bottom: 6px;
+        }
+        .project-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin: 0 0 6px 0;
+            line-height: 1.4;
+        }
+        .project-desc {
+            font-size: 12px;
+            color: var(--text-muted);
+            line-height: 1.5;
+            margin-bottom: 12px;
+        }
+        .project-link-text {
+            font-size: 12px;
+            font-weight: 600;
+            color: #1a3327;
+            margin-top: auto;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        /* Quy trình (Timeline) giống cấu trúc ảnh 3 */
+        .timeline {
+            position: relative;
+            padding-left: 20px;
+            border-left: 2px solid #e1e8e5;
+            margin-top: 10px;
+        }
+        .timeline-item {
+            position: relative;
+            margin-bottom: 25px;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 4px;
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: var(--accent-gold);
+            border: 2px solid var(--bg-light);
+        }
+        .timeline-title {
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+        .timeline-desc {
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.5;
+        }
+
+        /* Tổng kết & Liên hệ */
+        .summary-box {
+            background: var(--card-white);
+            border-radius: 20px;
+            padding: 20px;
+            margin-bottom: 15px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.01);
+        }
+        .summary-box h4 {
+            margin: 0 0 10px 0;
+            color: #1a3327;
+        }
+        .summary-box p {
+            margin: 0;
+            font-size: 13px;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        footer {
+            text-align: center;
+            padding: 30px 20px;
+            font-size: 12px;
+            color: var(--text-muted);
+            background: #eae8e2;
+            margin-top: 50px;
+            border-radius: 24px 24px 0 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- THANH ĐIỀU HƯỚNG CHUẨN ẢNH 1 -->
+    <div class="nav-container">
+        <div class="nav-title">My <span>Portfolio</span></div>
+        <div class="nav-links">
+            <a href="#gioi-thieu" class="nav-item">👤 Giới thiệu</a>
+            <a href="#du-an" class="nav-item">📁 Dự án</a>
+            <a href="#quy-trinh" class="nav-item">🧭 Quy trình</a>
+            <a href="#tong-ket" class="nav-item">✅ Tổng kết</a>
+            <a href="#lien-he" class="nav-item">📩 Liên hệ</a>
+        </div>
+    </div>
+
+    <!-- KHUNG BANNER XANH LÁ ĐẬM CHUẨN ẢNH 1 -->
+    <div class="hero-section">
+        <div class="badge-pill">💻 PORTFOLIO KỸ THUẬT SỐ</div>
+        
+        <!-- THAY TÊN CỦA BẠN TẠI ĐÂY -->
+        <h1 class="hero-title">Xin chào, em là <br>Nguyễn Văn A</h1>
+        
+        <!-- THAY THÔNG TIN GIỚI THIỆU TẠI ĐÂY -->
+        <p class="hero-desc">
+            Đây là Portfolio cá nhân của Nguyễn Văn A – mã sinh viên 25000000 – sinh viên thuộc ngành Hệ thống thông tin, Trường Đại học Công nghệ, ĐHQGHN, tổng hợp các sản phẩm học tập, kỹ năng số, khả năng sử dụng công cụ trực tuyến và ứng dụng trí tuệ nhân tạo một cách có trách nhiệm.
+        </p>
+        
+        <div class="hero-buttons">
+            <a href="#du-an" class="btn-gold">📁 Xem dự án</a>
+            <a href="#gioi-thieu" class="btn-outline">✨ Tìm hiểu thêm</a>
+        </div>
+    </div>
+
+    <!-- KHU VỰC TRANG GIỚI THIỆU CHUẨN ẢNH 2 -->
+    <div class="section-container" id="gioi-thieu">
+        <h2 class="section-title">Thông tin cá nhân và mục tiêu học tập</h2>
+        <p class="section-subtitle">Portfolio này thể hiện quá trình học tập, rèn luyện kỹ năng số và khả năng trình bày sản phẩm học tập.</p>
+        
+        <div class="profile-card">
+            <!-- ẢNH ĐẠI DIỆN: Nếu có ảnh, hãy đặt tên file ảnh là avatar.jpg và bỏ dấu chú thích, nếu không sẽ hiện emoji -->
+            <div class="avatar-box">
+                <!-- <img src="avatar.jpg" alt="Avatar"> -->
+                👤
+            </div>
+            
+            <!-- THAY TÊN VÀ THÔNG TIN CHI TIẾT CỦA BẠN -->
+            <div class="profile-name">Nguyễn Văn A</div>
+            <div class="profile-sub">Sinh viên đang xây dựng Portfolio kỹ thuật số.</div>
+            
+            <div class="info-list">
+                <div class="info-item">
+                    <span>👤</span> <span class="info-label">Họ tên:</span> Nguyễn Văn A
+                </div>
+                <div class="info-item">
+                    <span>🆔</span> <span class="info-label">Mã sinh viên:</span> 25000000
+                </div>
+                <div class="info-item">
+                    <span>🎯</span> <span class="info-label">Mục tiêu học tập:</span> Nâng cao năng lực ứng dụng công nghệ thông tin, làm chủ các công cụ AI và xây dựng tác phong làm việc số chuyên nghiệp, liêm chính.
+                </div>
+                <div class="info-item">
+                    <span>🚀</span> <span class="info-label">Định hướng:</span> Trở thành Chuyên viên Phân tích Hệ thống (Business Analyst) có tư duy giải quyết vấn đề bằng công nghệ.
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KHU VỰC TRANG DỰ ÁN (6 BÀI TẬP CLICK ĐƯỢC THEO ẢNH 3 & 4) -->
+    <div class="section-container" id="du-an">
+        <h2 class="section-title">Sản phẩm học tập</h2>
+        <p class="section-subtitle">Danh sách 6 bài tập thành phần. Nhấn vào từng ô để mở file sản phẩm (PDF) trên Google Drive.</p>
+        
+        <div class="project-grid">
+            
+            <!-- BÀI 1 - DÁN LINK GOOGLE DRIVE VÀO CHỖ href="#" -->
+            <a href="CHÈN_LINK_DRIVE_BÀI_1_VÀO_ĐÂY" target="_blank" class="project-card">
+                <div>
+                    <div class="project-tag">Bài tập 1</div>
+                    <div class="project-title">Thao tác cơ bản với tệp tin và thư mục</div>
+                    <div class="project-desc">Trình bày cấu trúc thư mục tối ưu và quy tắc đặt tên tệp đã thiết lập, kèm ảnh chụp minh họa. (Máy tính và các thiết bị ngoại vi)</div>
+                </div>
+                <div class="project-link-text">📄 Xem sản phẩm ↗</div>
+            </a>
+
+            <!-- BÀI 2 - DÁN LINK GOOGLE DRIVE VÀO CHỖ href="#" -->
+            <a href="CHÈN_LINK_DRIVE_BÀI_2_VÀO_ĐÂY" target="_blank" class="project-card">
+                <div>
+                    <div class="project-tag">Bài tập 2</div>
+                    <div class="project-title">Tìm kiếm và đánh giá thông tin học thuật</div>
+                    <div class="project-desc">Trình bày kết quả tìm kiếm học thuật bằng các toán tử nâng cao và bảng đánh giá nguồn tin đã thực hiện. (Khai thác dữ liệu và thông tin)</div>
+                </div>
+                <div class="project-link-text">📄 Xem sản phẩm ↗</div>
+            </a>
+
+            <!-- BÀI 3 - DÁN LINK GOOGLE DRIVE VÀO CHỖ href="#" -->
+            <a href="CHÈN_LINK_DRIVE_BÀI_3_VÀO_ĐÂY" target="_blank" class="project-card">
+                <div>
+                    <div class="project-tag">Bài tập 3</div>
+                    <div class="project-title">Viết Prompt hiệu quả cho các tác vụ học tập</div>
+                    <div class="project-desc">Trình bày sự so sánh giữa Prompt ban đầu và Prompt cải tiến cùng kết quả đầu ra từ AI. (Tổng quan về trí tuệ nhân tạo)</div>
+                </div>
+                <div class="project-link-text">📄 Xem sản phẩm ↗</div>
+            </a>
+
+            <!-- BÀI 4 - DÁN LINK GOOGLE DRIVE VÀO CHỖ href="#" -->
+            <a href="CHÈN_LINK_DRIVE_BÀI_4_VÀO_ĐÂY" target="_blank" class="project-card">
+                <div>
+                    <div class="project-tag">Bài tập 4</div>
+                    <div class="project-title">Sử dụng công cụ hợp tác trực tuyến cho dự án nhóm</div>
+                    <div class="project-desc">Trình bày minh chứng về việc sử dụng công cụ quản lý dự án nhóm và cách thức phối hợp trực tuyến. (Giao tiếp và hợp tác)</div>
+                </div>
+                <div class="project-link-text">📄 Xem sản phẩm ↗</div>
+            </a>
+
+            <!-- BÀI 5 - DÁN LINK GOOGLE DRIVE VÀO CHỖ href="#" -->
+            <a href="CHÈN_LINK_DRIVE_BÀI_5_VÀO_ĐÂY" target="_blank" class="project-card">
+                <div>
+                    <div class="project-tag">Bài tập 5</div>
+                    <div class="project-title">Sử dụng AI tạo sinh để hỗ trợ sáng tạo nội dung</div>
+                    <div class="project-desc">Trưng bày sản phẩm nội dung số hoàn thiện (hình ảnh, bài viết) được hỗ trợ thiết kế bởi công cụ AI. (Sáng tạo nội dung số)</div>
+                </div>
+                <div class="project-link-text">📄 Xem sản phẩm ↗</div>
+            </a>
+
+            <!-- BÀI 6 - DÁN LINK GOOGLE DRIVE VÀO CHỖ href="#" -->
+            <a href="CHÈN_LINK_DRIVE_BÀI_6_VÀO_ĐÂY" target="_blank" class="project-card">
+                <div>
+                    <div class="project-tag">Bài tập 6</div>
+                    <div class="project-title">Sử dụng AI có trách nhiệm trong học tập và nghiên cứu</div>
+                    <div class="project-desc">Trình bày bộ nguyên tắc cá nhân về sử dụng AI có trách nhiệm dựa trên các nghiên cứu đã thực hiện. (An toàn và liêm chính học thuật)</div>
+                </div>
+                <div class="project-link-text">📄 Xem sản phẩm ↗</div>
+            </a>
+
+        </div>
+    </div>
+
+    <!-- KHU VỰC TRANG QUY TRÌNH (ẢNH 3 & 4) -->
+    <div class="section-container" id="quy-trinh">
+        <h2 class="section-title">Quy trình thực hiện</h2>
+        <p class="section-subtitle">Các bước hệ thống hóa và hoàn thiện năng lực kỹ thuật số qua từng giai đoạn học tập.</p>
+        
+        <div class="timeline">
+            <div class="timeline-item">
+                <div class="timeline-title">Giai đoạn 1: Chuẩn hóa kỹ năng cơ bản</div>
+                <div class="timeline-desc">Học cách thiết lập hệ thống quản lý tệp tin một cách khoa học, rèn luyện kỹ năng tìm kiếm thông tin học thuật có chọn lọc qua các toán tử thông minh.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-title">Giai đoạn 2: Tương tác và Cộng tác số</div>
+                <div class="timeline-desc">Ứng dụng kỹ thuật đặt câu lệnh (Prompt Engineering) để làm việc hiệu quả với AI; ứng dụng các nền tảng trực tuyến nhằm tối ưu hóa tiến độ dự án làm việc nhóm.</div>
+            </div>
+            <div class="timeline-item">
+                <div class="timeline-title">Giai đoạn 3: Đổi mới sáng tạo và Liêm chính học thuật</div>
+                <div class="timeline-desc">Tận dụng AI tạo sinh để hỗ trợ thiết kế và truyền thông nội dung một cách sáng tạo, đồng thời luôn tuân thủ bộ quy tắc sử dụng công nghệ có trách nhiệm và an toàn.</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- KHU VỰC TRANG TỔNG KẾT (CÁC YÊU CẦU Ở ẢNH 4) -->
+    <div class="section-container" id="tong-ket">
+        <h2 class="section-title">Tổng kết dự án Portfolio</h2>
+        <p class="section-subtitle">Những trải nghiệm, bài học đúc kết và thách thức đã vượt qua.</p>
+        
+        <div class="summary-box">
+            <h4>🧠 Trải nghiệm và Cảm nhận cá nhân</h4>
+            <p>Quá trình xây dựng Digital Portfolio này giúp em nhìn nhận lại toàn bộ chặng đường học tập một cách trực quan. Việc tự tay hệ thống hóa các sản phẩm bài tập mang lại cảm giác tự hào và động lực lớn.</p>
+        </div>
+        
+        <div class="summary-box">
+            <h4>💡 Kiến thức và Kỹ năng cốt lõi đạt được</h4>
+            <p>Em đã nâng cao đáng kể tư duy quản trị dữ liệu, cách phối hợp nhóm từ xa và đặc biệt là năng lực làm việc cộng tác cùng AI. Khả năng tư duy số được cải thiện rõ rệt qua từng sản phẩm.</p>
+        </div>
+        
+        <div class="summary-box">
+            <h4>🔥 Điểm đắc tâm và Thách thức đối mặt</h4>
+            <p>Điểm tâm đắc nhất là tạo ra được một không gian số mang đậm dấu ấn cá nhân. Thách thức lớn nhất ban đầu là tiếp cận với các công nghệ lưu trữ trực tuyến và cấu trúc bài làm, nhưng nhờ sự kiên trì em đã vượt qua.</p>
+        </div>
+    </div>
+
+    <!-- KHU VỰC LIÊN HỆ -->
+    <div class="section-container" id="lien-he">
+        <h2 class="section-title">Liên hệ</h2>
+        <p class="section-subtitle">Thông tin kết nối và trao đổi học thuật.</p>
+        <div class="profile-card" style="text-align: left;">
+            <div class="info-item">✉️ <span class="info-label">Email:</span> Thêm_Email_Của_Bạn@vnu.edu.vn</div>
+            <div class="info-item">🌐 <span class="info-label">GitHub:</span> Thêm_Link_GitHub_Của_Bạn</div>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2026 Bản quyền thuộc về tác giả Portfolio. Được vận hành trên GitHub Pages.</p>
+    </footer>
+
+</body>
+</html>
